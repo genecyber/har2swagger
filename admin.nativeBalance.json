@@ -1,0 +1,35 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Threema API"
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "api.threema.ch",
+  "paths": {
+    "\/admin\/ethBalance": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/ethBalanceResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ethBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "balance": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

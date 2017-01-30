@@ -1,0 +1,38 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Threema API"
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "api.threema.ch",
+  "paths": {
+    "\/admin\/sendEth": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/sendEthResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "sendEthResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "object",
+          "properties": {
+            
+          }
+        }
+      }
+    }
+  }
+}

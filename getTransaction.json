@@ -1,0 +1,70 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Threema API"
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "api.threema.ch",
+  "paths": {
+    "\/proxy\/api\/v1\/getTransaction": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/getTransactionResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "getTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "tx": {
+          "type": "object",
+          "properties": {
+            "blockHash": {
+              "type": "string"
+            },
+            "blockNumber": {
+              "type": "number"
+            },
+            "from": {
+              "type": "string"
+            },
+            "gas": {
+              "type": "number"
+            },
+            "gasPrice": {
+              "type": "string"
+            },
+            "hash": {
+              "type": "string"
+            },
+            "input": {
+              "type": "string"
+            },
+            "nonce": {
+              "type": "number"
+            },
+            "to": {
+              "type": "null"
+            },
+            "transactionIndex": {
+              "type": "number"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

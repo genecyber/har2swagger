@@ -1,0 +1,38 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Threema API"
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "api.threema.ch",
+  "paths": {
+    "\/admin\/accounts": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/accountsResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "accountsResponse": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

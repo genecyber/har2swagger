@@ -1,0 +1,67 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Threema API"
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "api.threema.ch",
+  "paths": {
+    "\/proxy\/api\/v1\/getTransactionReceipt": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/getTransactionReceiptResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "getTransactionReceiptResponse": {
+      "type": "object",
+      "properties": {
+        "txReceipt": {
+          "type": "object",
+          "properties": {
+            "blockHash": {
+              "type": "string"
+            },
+            "blockNumber": {
+              "type": "number"
+            },
+            "contractAddress": {
+              "type": "string"
+            },
+            "cumulativeGasUsed": {
+              "type": "number"
+            },
+            "from": {
+              "type": "string"
+            },
+            "gasUsed": {
+              "type": "number"
+            },
+            "logs": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "transactionHash": {
+              "type": "string"
+            },
+            "transactionIndex": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}

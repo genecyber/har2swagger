@@ -1,0 +1,1045 @@
+{
+  "paths": {
+    "\/auth": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#\/definitions\/AuthResponse"
+            }
+          }
+        },
+        "tags": [
+          "Ledger"
+        ],
+        "summary": "Authentication for the Loyyal API",
+        "parameters": [
+          {
+            "name": "username",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "Username to use for accessing the api endpoints"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "Password to use for accessing the api endpoints"
+          }
+        ]
+      }
+    },
+    "\/createReward": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#\/definitions\/Contract"
+            }
+          }
+        },
+        "tags": [
+          "Ledger"
+        ],
+        "summary": "Used to create a new unique reward in the ledger",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "description": "RApp ID (Not implemented yet)"
+          },
+          {
+            "name": "host",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "default": "http:\/\/localhost:8545",
+            "description": "host:port used to connect to your entry node"
+          },
+          {
+            "name": "accountIndex",
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "default": 0,
+            "description": "account index to use"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "in": "query",
+            "description": "The json web token from the \/auth call",
+            "required": false
+          }
+        ]
+      }
+    },
+    "\/createWallet": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#\/definitions\/Wallet"
+            }
+          }
+        },
+        "tags": [
+          "Ledger"
+        ],
+        "summary": "Used to create a new wallet",
+        "parameters": [
+          {
+            "name": "password",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "description": "Password or passphrase for the wallet to be created"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "in": "query",
+            "description": "The json web token from the \/auth call",
+            "required": false
+          }
+        ]
+      }
+    },
+    "\/setAttributes": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#\/definitions\/Attributes"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "rewardAddress",
+            "type": "string",
+            "required": true,
+            "in": "query"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "in": "query"
+          },
+          {
+            "name": "symbol",
+            "type": "string",
+            "required": false,
+            "in": "query"
+          },
+          {
+            "name": "decimals",
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "format": "int32",
+            "description": "Amount"
+          },
+          {
+            "name": "host",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "default": "http:\/\/localhost:8545",
+            "description": "host:port used to connect to your entry node"
+          },
+          {
+            "name": "accountIndex",
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "default": 0,
+            "description": "account index to use"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "in": "query",
+            "description": "The json web token from the \/auth call",
+            "required": false
+          }
+        ],
+        "tags": [
+          "Ledger"
+        ],
+        "summary": "Token attributes: Name,Symbol,Decimal precision"
+      }
+    },
+    "\/history": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#\/definitions\/History Items"
+            }
+          }
+        },
+        "tags": [
+          "Ledger"
+        ],
+        "summary": "Transaction history for specific reward",
+        "parameters": [
+          {
+            "name": "rewardAddress",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "Reward to get history for"
+          },
+          {
+            "name": "host",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "default": "http:\/\/localhost:8545",
+            "description": "host:port used to connect to your entry node"
+          },
+          {
+            "name": "accountIndex",
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "default": 0,
+            "description": "account index to use"
+          },
+          {
+            "name": "from",
+            "type": "number",
+            "required": false,
+            "in": "query",
+            "description": "Blocknumber to start from"
+          },
+          {
+            "name": "to",
+            "type": "number",
+            "required": false,
+            "in": "query",
+            "description": "Blocknuber to stop at"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "in": "query",
+            "description": "The json web token from the \/auth call",
+            "required": false
+          }
+        ]
+      }
+    },
+    "\/balance": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#\/definitions\/balance"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "agentAddress",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "agent to get balance for"
+          },
+          {
+            "name": "rewardAddress",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "reward contract to get balance of"
+          },
+          {
+            "name": "host",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "default": "http:\/\/localhost:8545",
+            "description": "host:port used to connect to your entry node"
+          },
+          {
+            "name": "accountIndex",
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "default": 0,
+            "description": "account index to use"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "in": "query",
+            "description": "The json web token from the \/auth call",
+            "required": false
+          }
+        ],
+        "tags": [
+          "Ledger"
+        ],
+        "summary": "The balance of a particular reward in an agent's wallet"
+      }
+    },
+    "\/issue": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#\/definitions\/transaction"
+            }
+          }
+        },
+        "tags": [
+          "Ledger"
+        ],
+        "summary": "Create and issue new rewards of a particular type to a specified agent",
+        "parameters": [
+          {
+            "name": "agentAddress",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "agent to issue to"
+          },
+          {
+            "name": "amount",
+            "type": "integer",
+            "required": true,
+            "in": "query",
+            "description": "amount to issue",
+            "format": "int32"
+          },
+          {
+            "name": "rewardAddress",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "Reward contract"
+          },
+          {
+            "name": "host",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "default": "http:\/\/localhost:8545",
+            "description": "host:port used to connect to your entry node"
+          },
+          {
+            "name": "accountIndex",
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "default": 0,
+            "description": "account index to use"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "in": "query",
+            "description": "The json web token from the \/auth call",
+            "required": false
+          }
+        ]
+      }
+    },
+    "\/transfer": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#\/definitions\/transaction"
+            }
+          }
+        },
+        "summary": "Transfer specific rewards from one agent to another agent",
+        "parameters": [
+          {
+            "name": "agentAddress",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "From"
+          },
+          {
+            "name": "rewardAddress",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "Reward Contract"
+          },
+          {
+            "name": "destinationAddress",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "To"
+          },
+          {
+            "name": "amount",
+            "type": "integer",
+            "required": true,
+            "in": "query",
+            "format": "int32",
+            "description": "Amount"
+          },
+          {
+            "name": "host",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "default": "http:\/\/localhost:8545",
+            "description": "host:port used to connect to your entry node"
+          },
+          {
+            "name": "accountIndex",
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "default": 0,
+            "description": "account index to use"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "in": "query",
+            "description": "The json web token from the \/auth call",
+            "required": false
+          }
+        ],
+        "tags": [
+          "Ledger"
+        ]
+      }
+    },
+    "\/block": {
+      "get": {
+        "tags": [
+          "Ledger"
+        ],
+        "summary": "Get last found block number",
+        "parameters": [
+          {
+            "name": "host",
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "default": "http:\/\/localhost:8545",
+            "description": "host:port used to connect to your entry node"
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "in": "query",
+            "description": "The json web token from the \/auth call",
+            "required": false
+          }
+        ],
+        "operationId": "block",
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "schema": {
+              "$ref": "#\/definitions\/block"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "\/getBlock": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/getBlockResponse"
+            }
+          }
+        },
+        "tags": [
+          "Experimental"
+        ],
+        "summary": "",
+        "parameters": [
+          
+        ]
+      }
+    },
+    "\/getTransaction": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/getTransactionResponse"
+            }
+          }
+        },
+        "tags": [
+          "Experimental"
+        ],
+        "summary": "",
+        "parameters": [
+          
+        ]
+      }
+    },
+    "\/getTransactionReceipt": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/getTransactionReceiptResponse"
+            }
+          }
+        },
+        "tags": [
+          "Experimental"
+        ],
+        "summary": "",
+        "parameters": [
+          
+        ]
+      }
+    },
+    "\/admin\/accounts": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/accountsResponse"
+            }
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
+    "\/admin\/info": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/infoResponse"
+            }
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
+    "\/admin\/nativeBalance": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/nativeBalanceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      }
+    },
+    "\/admin\/sendNative": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#\/definitions\/sendNativeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Admin"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AuthResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "Agent Items": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "$ref": "#\/definitions\/Agent Item"
+      },
+      "description": "Array of Agent Item"
+    },
+    "Agent Item": {
+      "properties": {
+        "transactionID": {
+          "type": "string",
+          "description": "Transaction Hash of Agent",
+          "example": "0xxc276528a5e2fbe97f0d2b2fef9e86c14a45d44c00abd4bd4a2681465859b331d"
+        },
+        "Rapp": {
+          "type": "string",
+          "description": "RApp ID",
+          "example": "79d5926e0307d3a972545aefa9e7e28c"
+        },
+        "entry": {
+          "type": "string",
+          "description": "Node Entrypoint Url",
+          "example": "http:\/\/162.243.248.133:8545"
+        },
+        "user": {
+          "type": "string",
+          "description": "Loyyal Username",
+          "example": "TestUser"
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of RApp Agent",
+          "example": "0xac19dcdafbd2396339d2b4ae961ae212db2831cf"
+        },
+        "type": {
+          "type": "string",
+          "description": "Agent Type",
+          "example": "RApp"
+        },
+        "_rev": {
+          "type": "string",
+          "description": "Version ID (Record version)",
+          "example": "2-68e5315f4f2ebd80d6d56acdf6462c75"
+        },
+        "id": {
+          "type": "string",
+          "description": "RApp ID",
+          "example": "79d5926e0307d3a972545aefa9e7e28c"
+        }
+      },
+      "description": "Agent return object (Can be type Agent of RApp)",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "_rev",
+        "type",
+        "address"
+      ]
+    },
+    "Wallet": {
+      "properties": {
+        "address": {
+          "type": "string",
+          "example": "0x7cf1c9464dd7c94e4d44eefecbf6987afd0e9591"
+        },
+        "encrypted": {
+          "type": "boolean",
+          "example": true
+        },
+        "locked": {
+          "type": "boolean",
+          "example": true
+        },
+        "hash": {
+          "type": "string",
+          "example": "342f636d174cc1caa49ce16e5b257877191b663e0af0271d2ea03ac7e139317d"
+        },
+        "private": {
+          "type": "string",
+          "example": "U2FsdGVkX19ZrornRBIfl1IDdcj6S9YywY8EgOeOtLj2DHybM\/CHL4Jl0jcwjT+36kDnjj+qEfUBu6J1mGQF\/fNcD\/TsAUgGUTEUEOsP1CKDvNHfLmWLIfxqnYHhHsG5"
+        },
+        "public": {
+          "type": "string",
+          "example": "U2FsdGVkX19EaDNK52q7LEz3hL\/VR3dYW5VcoP04tcVKNS0Q3JINpM4XzttRJCBtq4g22hNDrOR8RWyHuh3nPo0pRSe9r5AUfEiCLaMBAhI16kf2KqCA8ah4brkya9ZLECdIl0HDTMYfDASBnyNXd87qodt46U0vdRT3PppK+9hsyqP8yqm9kFcWqMHktqubBE937LIU0W22Rfw6cJRwIw=="
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "transactionID": {
+          "type": "string",
+          "example": "0xc276528a5e2fbe97f0d2b2fef9e86c14a45d44c00abd4bd4a2681465859b331d"
+        },
+        "rewardAddress": {
+          "type": "string",
+          "example": "0xb0406ab0fd0a4ce88ddbde7e62c61f3bf6710fd3"
+        }
+      }
+    },
+    "balance": {
+      "properties": {
+        "balance": {
+          "type": "integer",
+          "format": "int32",
+          "example": 123
+        },
+        "pending": {
+          "type": "integer",
+          "format": "int32",
+          "example": -12
+        }
+      }
+    },
+    "Attributes": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Paradise Points"
+        },
+        "symbol": {
+          "type": "string",
+          "example": "PP"
+        },
+        "decimals": {
+          "type": "integer",
+          "format": "int32",
+          "example": 2
+        }
+      }
+    },
+    "arg": {
+      "properties": {
+        "_amount": {
+          "type": "string",
+          "example": "1"
+        },
+        "_owner": {
+          "type": "string",
+          "example": "0xac19dcdafbd2396339d2b4ae961ae212db2831cf"
+        }
+      },
+      "additionalProperties": true
+    },
+    "History Item": {
+      "properties": {
+        "args": {
+          "$ref": "#\/definitions\/arg"
+        },
+        "event": {
+          "type": "string",
+          "example": "TokenCreated"
+        },
+        "transactionIndex": {
+          "type": "integer",
+          "format": "int32",
+          "example": 0
+        },
+        "transactionID": {
+          "type": "string",
+          "example": "0x6798d7dc6be33b3a0b58e5b9a286db2fa90d6b55846920fd031d7cf7590a01b5"
+        },
+        "blockHash": {
+          "type": "string",
+          "example": "0x79058dea6dc868d58fe0c84f7cea8f86c79863f3160d757a54d90da8331b026f"
+        },
+        "logIndex": {
+          "type": "integer",
+          "format": "int32",
+          "example": 0
+        },
+        "blockNumber": {
+          "type": "integer",
+          "format": "int32",
+          "example": 4253
+        },
+        "address": {
+          "type": "string",
+          "example": "0x3e7355ea2dc8e35cc50fca3fce9864da7dc1f6f0"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "args",
+        "event",
+        "transactionIndex",
+        "transactionID",
+        "blockHash",
+        "logIndex",
+        "blockNumber",
+        "address"
+      ]
+    },
+    "History Items": {
+      "type": "object",
+      "items": {
+        "type": "string",
+        "$ref": "#\/definitions\/History Item"
+      },
+      "description": "Array of events"
+    },
+    "block": {
+      "properties": {
+        "checkpointIndex": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false
+    },
+    "transaction": {
+      "properties": {
+        "transactionID": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false
+    },
+    "getTransactionReceiptResponse": {
+      "type": "object",
+      "properties": {
+        "txReceipt": {
+          "type": "object",
+          "properties": {
+            "blockHash": {
+              "type": "string"
+            },
+            "blockNumber": {
+              "type": "number"
+            },
+            "contractAddress": {
+              "type": "string"
+            },
+            "cumulativeGasUsed": {
+              "type": "number"
+            },
+            "from": {
+              "type": "string"
+            },
+            "gasUsed": {
+              "type": "number"
+            },
+            "logs": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "transactionHash": {
+              "type": "string"
+            },
+            "transactionIndex": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "getTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "tx": {
+          "type": "object",
+          "properties": {
+            "blockHash": {
+              "type": "string"
+            },
+            "blockNumber": {
+              "type": "number"
+            },
+            "from": {
+              "type": "string"
+            },
+            "gas": {
+              "type": "number"
+            },
+            "gasPrice": {
+              "type": "string"
+            },
+            "hash": {
+              "type": "string"
+            },
+            "input": {
+              "type": "string"
+            },
+            "nonce": {
+              "type": "number"
+            },
+            "to": {
+              "type": "null"
+            },
+            "transactionIndex": {
+              "type": "number"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "getBlockResponse": {
+      "type": "object",
+      "properties": {
+        "block": {
+          "type": "object",
+          "properties": {
+            "difficulty": {
+              "type": "string"
+            },
+            "extraData": {
+              "type": "string"
+            },
+            "gasLimit": {
+              "type": "number"
+            },
+            "gasUsed": {
+              "type": "number"
+            },
+            "hash": {
+              "type": "string"
+            },
+            "logsBloom": {
+              "type": "string"
+            },
+            "miner": {
+              "type": "string"
+            },
+            "nonce": {
+              "type": "string"
+            },
+            "number": {
+              "type": "number"
+            },
+            "parentHash": {
+              "type": "string"
+            },
+            "receiptRoot": {
+              "type": "string"
+            },
+            "sha3Uncles": {
+              "type": "string"
+            },
+            "size": {
+              "type": "number"
+            },
+            "stateRoot": {
+              "type": "string"
+            },
+            "timestamp": {
+              "type": "number"
+            },
+            "totalDifficulty": {
+              "type": "string"
+            },
+            "transactions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "transactionsRoot": {
+              "type": "string"
+            },
+            "uncles": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sendNativeResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "object",
+          "properties": {
+            
+          }
+        }
+      }
+    },
+    "nativeBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "balance": {
+          "type": "string"
+        }
+      }
+    },
+    "infoResponse": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "type": "object",
+          "properties": {
+            "accounts": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "accountsResponse": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "swagger": "2.0",
+  "info": {
+    "version": "0.1.0",
+    "title": "Loyyal Local",
+    "x-ibm-name": "loyyal-local",
+    "description": "Localized API for interacting with Loyyal",
+    "contact": {
+      "name": "Shannon Code",
+      "email": "shannon@loyyal.com",
+      "url": "http:\/\/loyyal.com"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "host": "localhost:4730",
+  "basePath": "\/v1",
+  "consumes": [
+    "application\/json"
+  ],
+  "produces": [
+    "application\/json"
+  ]
+}
