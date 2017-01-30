@@ -4,8 +4,8 @@ var Type = require('type-of-is');
 var assert = require('assert');
 
 // Set those:
-apiTitle = "Threema API";
-apiURL = "api.threema.ch";
+apiTitle = "Loyyal API";
+apiURL = "someHost";
 apiSchemes = ["https"];
 
 inputFile = process.argv[2];
